@@ -1,6 +1,10 @@
 const VALID_EMAIL = "user@example.com";
 const VALID_PASSWORD = "12345678";
 
+
+let currentLang = localStorage.getItem("language") || "en";
+let currentMessageKey = null;
+
 // --- Получение элементов ---
 const form = document.getElementById("login-form");
 const message = document.getElementById("message");
@@ -11,28 +15,34 @@ const togglePasswordBtn = document.getElementById("toggle-password");
 // --- Обработчик формы ---
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-
+  
     const email = emailInput.value.trim();
     const password = passwordInput.value.trim();
-
+  
+    if (!email || !password) {
+        showMessage("fillAllFields");
+        shakeForm();
+        return;
+    }
+  
     if (!isValidEmailOrPhone(email)) {
-        showMessage("Введите корректный email или телефон");
+        showMessage("invalidEmailPhone");
         shakeForm();
         return;
     }
-
+  
     if (!isValidPassword(password)) {
-        showMessage("Пароль должен быть от 6 до 20 символов без пробелов");
-        shakeForm();
-        return;
+      showMessage("invalidPassword");
+      shakeForm();
+      return;
     }
-
+  
     if (email === VALID_EMAIL && password === VALID_PASSWORD) {
-        saveUserData(email);
-        showMessage("Успешный вход!", "success");
+      saveUserData(email);
+      showMessage("loginSuccess", "success");
     } else {
-        showMessage("Неверный логин или пароль");
-        shakeForm();
+      showMessage("loginFail");
+      shakeForm();
     }
 });
 
@@ -52,10 +62,11 @@ const isValidPassword = (pwd) => {
 };
 
 // --- Отображение сообщения ---
-const showMessage = (text, type = "error") => {
-    message.textContent = text;
+const showMessage = (key, type = "error") => {
+    currentMessageKey = key;
+    message.textContent = translations[currentLang][key];
     message.style.color = type === "success" ? "green" : "red";
-};
+  };
 
 // --- Отображение анимации тряски формы ---
 const shakeForm = () => {
@@ -75,7 +86,6 @@ form.addEventListener("animationend", () => {
 // --- Сохранение данных ---
 function saveUserData(email) {
     localStorage.setItem("lastLogin", JSON.stringify({ email }));
-    // Можно использовать sessionStorage, если нужна временность
 }
 
 // --- Показ или скрытие пароля ---
@@ -85,3 +95,80 @@ togglePasswordBtn.addEventListener("click", () => {
     togglePasswordBtn.textContent = isHidden ? "Hide" : "Show";
 });
 
+// Элементы для перевода
+const elementsToTranslate = {
+    welcome: document.querySelector(".header-title"),
+    signIn: document.getElementById("form-title"),
+    continueWithGoogle: document.querySelector('button[aria-label="Continue with Google"] .social-content'),
+    signInWithApple: document.querySelector('button[aria-label="Sign in with Apple"] .social-content'),
+    or: document.querySelector(".divider span"),
+    emailOrPhone: document.getElementById("email"),
+    password: document.getElementById("password"),
+    forgotPassword: document.getElementById("forgot-password"),
+    keepLoggedInLabel: document.querySelector('label[for="remember"]'),
+    signInButton: document.getElementById("login-button"),
+    registerMessage: document.querySelector(".register-message a"),
+    togglePasswordBtn: document.getElementById("toggle-password"),
+    footer: document.getElementById("footer-text"),
+
+  };
+  
+  const languageToggle = document.getElementById("language-toggle");
+  
+  function setLanguage(lang) {
+    currentLang = lang;
+    const t = translations[lang];
+  
+    elementsToTranslate.welcome.textContent = t.welcome;
+    elementsToTranslate.signIn.textContent = t.signIn;
+    setTextAfterIcon(elementsToTranslate.continueWithGoogle, t.continueWithGoogle);
+    setTextAfterIcon(elementsToTranslate.signInWithApple, t.signInWithApple);
+    elementsToTranslate.or.textContent = t.or;
+    elementsToTranslate.emailOrPhone.placeholder = t.emailOrPhone;
+    elementsToTranslate.password.placeholder = t.password;
+    elementsToTranslate.forgotPassword.textContent = t.forgotPassword;
+    elementsToTranslate.keepLoggedInLabel.textContent = t.keepLoggedIn;
+    elementsToTranslate.signInButton.textContent = t.signInButton;
+    elementsToTranslate.registerMessage.textContent = t.newJoin;
+    elementsToTranslate.togglePasswordBtn.textContent = elementsToTranslate.togglePasswordBtn.textContent === translations.en.show ? t.show : t.hide;
+    elementsToTranslate.footer.textContent = t.footer;
+    
+    if (currentMessageKey) {
+        message.textContent = t[currentMessageKey];
+        message.style.color = message.style.color; 
+    }
+
+  }
+  
+  function setTextAfterIcon(spanElement, text) {
+    const img = spanElement.querySelector('img');
+    while (img.nextSibling) {
+      spanElement.removeChild(img.nextSibling);
+    }
+    spanElement.appendChild(document.createTextNode(' ' + text));
+  }
+  
+  // Сохраняем выбор пользователя
+  function saveLanguage(lang) {
+    localStorage.setItem("language", lang);
+  }
+  
+  // Загружаем язык из localStorage или по умолчанию
+  function loadLanguage() {
+    currentLang = localStorage.getItem("language") || "en";
+    languageToggle.checked = currentLang === "ru";
+    setLanguage(currentLang);
+  }
+  
+  // Обработчик переключения
+  languageToggle.addEventListener("change", () => {
+    currentLang = languageToggle.checked ? "ru" : "en";
+    setLanguage(currentLang);
+    saveLanguage(currentLang);
+  });
+  
+  // Инициализация при загрузке страницы
+  window.addEventListener("load", () => {
+    loadLanguage();
+  });
+  
