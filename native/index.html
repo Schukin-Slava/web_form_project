@@ -22,10 +22,10 @@
 
             <section class="social-login">
                 <button type="button" class="social-button" aria-label="Continue with Google">
-                    <span class="social-content">
+                    <span id="googleIn" class="social-content">
                         <img src="google_ico.png" alt="" width="20" height="20" />
-                        Continue with Google
-                    </span>
+                        Continue with Google              
+                     </span>
                 </button>
                 <button type="button" class="social-button" aria-label="Sign in with Apple">
                     <span class="social-content">
@@ -37,12 +37,11 @@
 
             <div class="divider"><span>or</span></div>
 
-            <input type="text" id="email" name="email" required placeholder="Email or phone" aria-required="true" />
+            <input type="text" id="email" name="email" placeholder="Email or phone" aria-required="true" />
 
             <div class="password-wrapper">
-                <input type="password" id="password" name="password" required placeholder="Password"
-                    aria-required="true" />
-                <button type="button" id="toggle-password" aria-label="Show password">Show</button>
+              <input type="password" id="password" name="password" placeholder="Password" aria-required="true" />
+              <button type="button" id="toggle-password" aria-label="Show password">Show</button>
             </div>
 
             <p><a href="#" id="forgot-password">Forgot password?</a></p>
@@ -58,14 +57,25 @@
         </form>
 
         <p class="register-message">
-            New? <a href="#" class="join-link">Join now</a>
+            <a href="#" class="join-link">New? Join now</a>
         </p>
     </main>
 
     <footer>
-        <p>© 2025 SignInForm. All rights reserved.</p>
+        <div class="footer-row">
+            <p id="footer-text">© 2025 SignInForm. All rights reserved.</p>
+              
+            <label for="language-toggle" class="switch">
+                <input type="checkbox" id="language-toggle" />
+                <span class="toggle-slider">
+                    <span class="lang-text lang-en">EN</span>
+                    <span class="lang-text lang-ru">RU</span>
+                </span>
+            </label>  
+        </div>
     </footer>
 
+    <script src="translations.js"></script>
     <script src="script.js" defer></script>
 </body>
 

@@ -1,11 +1,9 @@
-/* Reset and global box-sizing */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-/* Override all text styles */
 body,
 h1,
 h2,
@@ -36,6 +34,7 @@ body {
         min-height: 100vh;
 
 }
+
 @keyframes gradientShift {
     0% {
         background-position: 0% 50%;
@@ -64,7 +63,6 @@ header {
     position: relative;
 }
 
-
 .spinner {
     width: 40px;
     height: 40px;
@@ -90,7 +88,6 @@ header {
         transform: rotate(360deg);
     } 
 }
-
 
 footer {
     background-color: #ffffff;
@@ -132,6 +129,7 @@ form.no-animation {
 form.shake {
     animation: shake 0.5s ease;
 }
+
 @keyframes floatIn {
     0% {
         transform: scale(0.95);
@@ -237,9 +235,9 @@ input:focus {
 }
 
 input.error {
+
     border-color: red;
 }
-
 
 .password-wrapper {
     position: relative;
@@ -296,6 +294,14 @@ input.error {
     text-decoration: underline;
 }
 
+#message {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    transition: color 0.3s ease; 
+}
+
+
 .register-message {
     text-align: center;
     font-size: 14px;
@@ -312,12 +318,10 @@ input.error {
     text-decoration: underline;
 }
 
-/* Attribute selector for autofill warning or custom behavior */
 input[required] {
     background-color: #fffaf0;
 }
 
-/* Media Queries for adaptive design */
 @media (max-width: 768px) {
     form {
         padding: 24px;
@@ -342,4 +346,100 @@ input[required] {
     input[type="password"] {
         font-size: 14px;
     }
+}
+
+
+.footer-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+
+.language-switcher {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12px;
+    gap: 12px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 72px;
+    height: 32px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+.toggle-slider {
+    position: relative;
+    background-color: #ccc;
+    border-radius: 16px;
+    height: 100%;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6px;
+    box-sizing: border-box;
+    font-weight: bold;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    user-select: none;
+}
+
+/* Круг переключателя */
+.toggle-slider::before {
+    content: "";
+    position: absolute;
+    height: 28px;
+    width: 28px;
+    left: 2px;
+    top: 2px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+}
+
+/* Цвет активного фона */
+.switch input:checked+.toggle-slider {
+    background-color: #007bff;
+}
+
+/* Сдвиг круга вправо */
+.switch input:checked+.toggle-slider::before {
+    transform: translateX(40px);
+}
+
+.lang-text {
+    position: relative;
+    z-index: 1;
+    width: 28px;
+    text-align: center;
+    pointer-events: none;
+    user-select: none;
+    color: white;
+    transition: opacity 0.3s ease;
+}
+
+.switch input:checked+.toggle-slider .lang-en {
+    opacity: 0.3;
+}
+
+.switch input:not(:checked)+.toggle-slider .lang-ru {
+    opacity: 0.3;
 }
