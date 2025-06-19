@@ -1,14 +1,14 @@
----
 
 # Форма авторизации — реализация на нативных технологиях
-![form_screenshot](https://github.com/user-attachments/assets/b3afeec6-6c0c-40f5-a39b-32755897b318)
+ ![form_screenshot](https://github.com/user-attachments/assets/b3afeec6-6c0c-40f5-a39b-32755897b318)
 
 ## Задание: «Нативные» технологии (27+ баллов). Реализация формы входа с использованием HTML, CSS и JavaScript
+Сайт для запуска: [**Сылка**](https://schukin-slava.github.io/web_form_project/native/index.html "сайт").
 
 <table>
   <tr>
     <td>Почта</td>
-    <td>cuser@example.com</td>
+    <td>user@example.com</td>
   </tr>
   <tr>
     <td>Пароль</td>
