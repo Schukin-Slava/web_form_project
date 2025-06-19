@@ -98,7 +98,7 @@ form.addEventListener("submit", (e) => {
 function isValidEmailOrPhone(input: string): boolean {
   const trimmed = input.trim();
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const phoneRegex = /^(\+?\d{1,3})?[\s\-]?\(?\d{1,4}\)?[\s\-]?\d{2,4}[\s\-]?\d{2,4}[\s\-]?\d{0,4}$/;
+  const phoneRegex = /^(\+?\d{1,3})?[\s-]?\(?\d{1,4}\)?[\s-]?\d{2,4}[\s-]?\d{2,4}[\s-]?\d{0,4}$/;
   return emailRegex.test(trimmed) || phoneRegex.test(trimmed);
 }
 
