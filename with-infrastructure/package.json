@@ -1,0 +1,15 @@
+{
+  "name": "with-infrastructure",
+  "version": "1.0.0",
+  "description": "![form_screenshot](https://github.com/user-attachments/assets/b3afeec6-6c0c-40f5-a39b-32755897b318)",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "npm": ">=8.0.0"
+  }
+}
