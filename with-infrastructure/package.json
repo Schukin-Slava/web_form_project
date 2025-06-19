@@ -1,7 +1,7 @@
 {
   "name": "with-infrastructure",
   "version": "1.0.0",
-  "description": "![form_screenshot](https://github.com/user-attachments/assets/b3afeec6-6c0c-40f5-a39b-32755897b318)",
+  "description": "",
   "main": "script.ts",
   "scripts": {
     "start": "node index.js",
