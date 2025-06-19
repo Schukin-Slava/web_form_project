@@ -1,0 +1,36 @@
+{
+  "name": "with-infrastructure",
+  "version": "1.0.0",
+  "description": "![form_screenshot](https://github.com/user-attachments/assets/b3afeec6-6c0c-40f5-a39b-32755897b318)",
+  "main": "script.ts",
+  "scripts": {
+    "start": "node index.js",
+    "type-check": "tsc --noEmit",
+    "serve": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "npm": ">=8.0.0",
+    "node": "22.16.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.29.0",
+    "@typescript-eslint/eslint-plugin": "^8.34.1",
+    "@typescript-eslint/parser": "^8.34.1",
+    "eslint": "^9.29.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.5.0",
+    "globals": "^16.2.0",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.34.1",
+    "vite": "^6.3.5"
+  }
+}
