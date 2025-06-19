@@ -108,77 +108,35 @@
 
 ## ✅ **6. (_+ 3 балла_) Подключение форматтера **
 
-✅ Установка `Prettier`:
-
-```bash
-npm install --save-dev prettier
-```
-
-✅ Конфигурация `.prettierrc`:
+- ✅ Установка `Prettier`:
+- ✅ Конфигурация `.prettierrc`:
 
 ```json
 {
+  "printWidth": 80,
+  "tabWidth": 2,
   "semi": true,
   "singleQuote": true,
-  "tabWidth": 2,
-  "printWidth": 80
+  "trailingComma": "es5",
+  "bracketSpacing": true,
+  "arrowParens": "avoid"
 }
 ```
 
-✅ Команда:
+- ❓ **Обоснование выбор конфигурации**:
+  Prettier — практически стандарт форматирования, поддерживает множество языков и интеграций. Он упрощает работу в команде, исключая споры о стиле кода.
+
+- ✅ Команды для проверки форматирования кода:
 
 ```jsonc
 "scripts": {
-  "format": "prettier --write ."
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
 }
 ```
-
-❓ **Обоснование**:
-Prettier упрощает работу в команде, исключая споры о стиле кода.
 
 ---
 
-## G. Тестирование (5 баллов)
-
-✅ Установка `Vitest`:
-
-```bash
-npm install --save-dev vitest
-```
-
-✅ Конфигурация `vite.config.ts`:
-
-```ts
-import { defineConfig } from 'vite';
-
-export default defineConfig({
-  test: {
-    globals: true,
-    environment: 'jsdom',
-  },
-});
-```
-
-✅ Пример теста:
-
-```ts
-// src/__tests__/email.test.ts
-import { isValidEmailOrPhone } from '../utils';
-
-test('valid email', () => {
-  expect(isValidEmailOrPhone('user@example.com')).toBe(true);
-});
-```
-
-✅ Команда:
-
-```jsonc
-"scripts": {
-  "test": "vitest"
-}
-```
-
-❓ **Обоснование**:
-`Vitest` идеально сочетается с Vite и TypeScript, быстрый, поддерживает JSDOM и снабжен приятным API.
+## **6. (_+ 3 балла_) Тестирование **
 
 ---
