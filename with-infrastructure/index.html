@@ -1,82 +1,107 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Форма авторизации</title>
     <link rel="stylesheet" href="styles.css" />
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-        <div class="header-container">
-            <img src="rotate_ico.png" alt="rotate" class="spinner" aria-hidden="true" />
-            <h1 class="header-title">Welcome</h1>
-        </div>
+      <div class="header-container">
+        <img
+          src="rotate_ico.png"
+          alt="rotate"
+          class="spinner"
+          aria-hidden="true"
+        />
+        <h1 class="header-title">Welcome</h1>
+      </div>
     </header>
 
     <main>
-        <form id="login-form" aria-labelledby="form-title">
-            <h2 id="form-title">Sign in</h2>
+      <form id="login-form" aria-labelledby="form-title">
+        <h2 id="form-title">Sign in</h2>
 
-            <section class="social-login">
-                <button type="button" class="social-button" aria-label="Continue with Google">
-                    <span id="googleIn" class="social-content">
-                        <img src="google_ico.png" alt="" width="20" height="20" />
-                        Continue with Google              
-                     </span>
-                </button>
-                <button type="button" class="social-button" aria-label="Sign in with Apple">
-                    <span class="social-content">
-                        <img src="apple_ico.png" alt="" width="20" height="20" />
-                        Sign in with Apple
-                    </span>
-                </button>
-            </section>
+        <section class="social-login">
+          <button
+            type="button"
+            class="social-button"
+            aria-label="Continue with Google"
+          >
+            <span id="googleIn" class="social-content">
+              <img src="google_ico.png" alt="" width="20" height="20" />
+              Continue with Google
+            </span>
+          </button>
+          <button
+            type="button"
+            class="social-button"
+            aria-label="Sign in with Apple"
+          >
+            <span class="social-content">
+              <img src="apple_ico.png" alt="" width="20" height="20" />
+              Sign in with Apple
+            </span>
+          </button>
+        </section>
 
-            <div class="divider"><span>or</span></div>
+        <div class="divider"><span>or</span></div>
 
-            <input type="text" id="email" name="email" placeholder="Email or phone" aria-required="true" />
+        <input
+          type="text"
+          id="email"
+          name="email"
+          placeholder="Email or phone"
+          aria-required="true"
+        />
 
-            <div class="password-wrapper">
-              <input type="password" id="password" name="password" placeholder="Password" aria-required="true" />
-              <button type="button" id="toggle-password" aria-label="Show password">Show</button>
-            </div>
+        <div class="password-wrapper">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Password"
+            aria-required="true"
+          />
+          <button type="button" id="toggle-password" aria-label="Show password">
+            Show
+          </button>
+        </div>
 
-            <p><a href="#" id="forgot-password">Forgot password?</a></p>
+        <p><a href="#" id="forgot-password">Forgot password?</a></p>
 
-            <div class="checkbox-group">
-                <input type="checkbox" id="remember" name="remember" />
-                <label for="remember">Keep me logged in</label>
-            </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="remember" name="remember" />
+          <label for="remember">Keep me logged in</label>
+        </div>
 
-            <button type="submit" id="login-button">Sign in</button>
+        <button type="submit" id="login-button">Sign in</button>
 
-            <div id="message" role="alert" aria-live="polite"></div>
-        </form>
+        <div id="message" role="alert" aria-live="polite"></div>
+      </form>
 
-        <p class="register-message">
-            <a href="#" class="join-link">New? Join now</a>
-        </p>
+      <p class="register-message">
+        <a href="#" class="join-link">New? Join now</a>
+      </p>
     </main>
 
     <footer>
-        <div class="footer-row">
-            <p id="footer-text">© 2025 SignInForm. All rights reserved.</p>
-              
-            <label for="language-toggle" class="switch">
-                <input type="checkbox" id="language-toggle" />
-                <span class="toggle-slider">
-                    <span class="lang-text lang-en">EN</span>
-                    <span class="lang-text lang-ru">RU</span>
-                </span>
-            </label>  
-        </div>
+      <div class="footer-row">
+        <p id="footer-text">© 2025 SignInForm. All rights reserved.</p>
+
+        <label for="language-toggle" class="switch">
+          <input type="checkbox" id="language-toggle" />
+          <span class="toggle-slider">
+            <span class="lang-text lang-en">EN</span>
+            <span class="lang-text lang-ru">RU</span>
+          </span>
+        </label>
+      </div>
     </footer>
 
     <script src="translations.js"></script>
     <script type="module" src="script.ts"></script>
-</body>
-
+  </body>
 </html>

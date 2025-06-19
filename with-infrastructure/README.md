@@ -4,7 +4,7 @@
 
 ## Задание 2: Подключаем инфраструктуру (24 балла). Реализация формы авторизации с подключением инфрастуктуры
 
-Сайт для запуска: [**Сылка**](https://schukin-slava.github.io/web_form_project/with-infrastructure/ "сайт").
+Сайт для запуска: [**Сылка**](https://schukin-slava.github.io/web_form_project/with-infrastructure/ 'сайт').
 
 <table>
   <tr>
@@ -28,92 +28,76 @@
 
 ## ✅**2. (_+ 2 балла_) Node.js и nvm (2 балла)**
 
-\*Фиксация версии Node.js с помощью `.nvmrc`:
+- Фиксация версии Node.js с помощью `.nvmrc`:
 
 ---
 
-## ✅**2. (_+ 4 балла_) Подключение TypeScript**
+## ✅**3. (_+ 4 балла_) Подключение TypeScript**
 
-✅ Установка и инициализация:
-
-```bash
-npm install --save-dev typescript
-npx tsc --init
-```
-
-✅ Настроен `tsconfig.json`:
+- ✅ Установка и инициализация Typescript. Настроен `tsconfig.json`:
 
 ```jsonc
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "ESNext",
+    "target": "ES6",
+    "module": "ES6",
     "strict": true,
-    "esModuleInterop": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
     "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true
+    "noEmit": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "allowJs": true,
+    "checkJs": true,
   },
-  "include": ["src"],
-  "exclude": ["node_modules"]
+  "include": ["./**/*.ts", "./**/*.js"],
+  "exclude": ["node_modules"],
 }
 ```
 
-❓ **Обоснование**:
-Строгая конфигурация помогает ловить ошибки на раннем этапе разработки и улучшает надёжность.
+❓ **Обоснование tsconfig.json**: Строгая конфигурация помогает ловить ошибки на раннем этапе разработки и улучшает надёжность.
+| Опция | Зачем нужна? |
+| --------------------- | ---------------------------------------------------------------------- |
+| `strict` | Включает все строгие проверки типов. |
+| `noEmit` | Отключает генерацию `.js` файлов — используется только проверка типов. |
+| `allowJs` + `checkJs` | Позволяет проверять существующий JS-код на ошибки типов. |
+| `noImplicitAny` | Запрещает неявный тип `any`. |
+| `strictNullChecks` | Обязывает явно учитывать `null` / `undefined`. |
+| `esModuleInterop` | Упрощает импорт модулей из CommonJS. |
+| `target`, `module` | Поддержка современных возможностей JS. |
 
-✅ Добавлена команда проверки типов:
-
-```jsonc
-"scripts": {
-  "type-check": "tsc --noEmit"
-}
-```
+- ✅ Типы данные приложения описаны.
+- ✅ Добавлена команда проверки типов:
 
 ---
 
-## D. Сборщик и дев-сервер (4 балла)
+## ✅ **4. (_+ 4 балла_) Сборщик и дев-сервер**
 
-✅ Установлен `Vite`:
-
-```bash
-npm install --save-dev vite
-```
-
-✅ Команды:
+- ✅ Установлен `Vite`. Скрипты serve и build:
 
 ```jsonc
 "scripts": {
-  "dev": "vite",
-  "build": "vite build",
-  "preview": "vite preview"
+  "serve": "vite",       // запуск dev-сервера
+  "build": "vite build"  // сборка проекта
 }
 ```
 
-❓ **Обоснование**:
-`Vite` — современный и быстрый сборщик, идеально подходит для фронтенда. Мгновенная перезагрузка, поддержка TypeScript из коробки.
-
-✅ Структура:
-
-```
-infrastructure/
-├── index.html
-├── src/
-│   └── main.ts
-├── vite.config.ts
-```
+- ❓ **Обоснование выбора сборщика**:
+  `Vite` — современный и быстрый сборщик, идеально подходит для фронтенда. Мгновенная перезагрузка, поддержка TypeScript. Простая настройка: легко настраивается под HTML, React, Vue и другие.
 
 ---
 
-## E. Линтер (3 балла)
+## ✅ **5. (_+ 3 балла_) Подключите линтер**
 
-✅ Установка `ESLint`:
+- ✅ Установка `ESLint`:
+- ❓ **Обоснование выбор конфигурации**:
+  Используется стандартная конфигурация с поддержкой TypeScript и импортов. ESLint — индустриальный стандарт.
 
-```bash
-npm install --save-dev eslint
-npx eslint --init
-```
+---
 
-✅ Добавлены команды:
+- ✅ Описание команд `ESLint`:
 
 ```jsonc
 "scripts": {
@@ -122,12 +106,7 @@ npx eslint --init
 }
 ```
 
-❓ **Обоснование**:
-Используется стандартная конфигурация с поддержкой TypeScript и импортов. ESLint — индустриальный стандарт.
-
----
-
-## F. Форматтер (3 балла)
+## ✅ **6. (_+ 3 балла_) Подключение форматтера **
 
 ✅ Установка `Prettier`:
 
@@ -170,12 +149,12 @@ npm install --save-dev vitest
 ✅ Конфигурация `vite.config.ts`:
 
 ```ts
-import { defineConfig } from "vite";
+import { defineConfig } from 'vite';
 
 export default defineConfig({
   test: {
     globals: true,
-    environment: "jsdom",
+    environment: 'jsdom',
   },
 });
 ```
@@ -184,10 +163,10 @@ export default defineConfig({
 
 ```ts
 // src/__tests__/email.test.ts
-import { isValidEmailOrPhone } from "../utils";
+import { isValidEmailOrPhone } from '../utils';
 
-test("valid email", () => {
-  expect(isValidEmailOrPhone("user@example.com")).toBe(true);
+test('valid email', () => {
+  expect(isValidEmailOrPhone('user@example.com')).toBe(true);
 });
 ```
 

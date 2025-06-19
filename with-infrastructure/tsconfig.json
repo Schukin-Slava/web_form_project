@@ -4,7 +4,7 @@
     "module": "esnext",
     "target": "esnext",
     "strict": true,
-   "noImplicitAny": true,
+    "noImplicitAny": true,
     "strictNullChecks": true,
     "strictFunctionTypes": true,
     "forceConsistentCasingInFileNames": true,
